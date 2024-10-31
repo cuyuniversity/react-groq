@@ -1,6 +1,6 @@
 import './App.css'
 import {reqToGroqAI} from "./utils/groq";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {Light as SyntaxHighlight} from "react-syntax-highlighter";
 import {darcula} from "react-syntax-highlighter/dist/cjs/styles/prism";
 
@@ -11,6 +11,11 @@ function App() {
     const ai = await reqToGroqAI(content.value);
     setData(ai);
   };
+
+  useEffect(() => {
+    document.title = "JidanGPT AI"
+  }, [])
+
   return(
     <main className='flex flex-col min-h-[80vh] justify-center items-center max-w-xl w-full mx-auto'>
       <h1 className='text-4xl text-indigo-500'>JidanGPT AI</h1>
